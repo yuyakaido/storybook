@@ -1,2 +1,3 @@
 rootProject.name='Storybook'
 include ':sample'
+include ':storybook'
