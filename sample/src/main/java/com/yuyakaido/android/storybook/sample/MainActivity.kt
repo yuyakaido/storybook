@@ -1,4 +1,4 @@
-package com.yuyakaido.android.storybook
+package com.yuyakaido.android.storybook.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
