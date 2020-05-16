@@ -4,5 +4,9 @@ import android.view.View
 import java.io.Serializable
 
 data class Storybook(
-    val elements: List<() -> View>
+    val elements: List<Element>
 ) : Serializable
+
+abstract class Element(val title: String) {
+    abstract fun view(): View
+}
