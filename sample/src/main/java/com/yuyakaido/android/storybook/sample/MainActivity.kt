@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val context = this
-        StorybookActivity.storybook = Storybook(
+        val storybook = Storybook(
             elements = List(10) {
                 object : Element(title = "Title $it") {
                     override fun view(): View = Button(context).apply { text = "Button $it" }
                 }
             }
         )
-        startActivity(StorybookActivity.createIntent(this))
+        startActivity(StorybookActivity.createIntent(this, storybook))
         finish()
     }
 

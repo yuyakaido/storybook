@@ -12,9 +12,10 @@ import com.yuyakaido.android.storybook.databinding.ActivityStorybookBinding
 class StorybookActivity : AppCompatActivity() {
 
     companion object {
-        lateinit var storybook: Storybook
+        private lateinit var storybook: Storybook
 
-        fun createIntent(context: Context): Intent {
+        fun createIntent(context: Context, storybook: Storybook): Intent {
+            this.storybook = storybook
             return Intent(context, StorybookActivity::class.java)
         }
     }
