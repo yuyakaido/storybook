@@ -11,25 +11,25 @@ import com.yuyakaido.android.storybook.databinding.ActivityStorybookBinding
 
 class StorybookActivity : AppCompatActivity() {
 
-    companion object {
-        private lateinit var storybook: Storybook
+  companion object {
+    private lateinit var storybook: Storybook
 
-        fun createIntent(context: Context, storybook: Storybook): Intent {
-            this.storybook = storybook
-            return Intent(context, StorybookActivity::class.java)
-        }
+    fun createIntent(context: Context, storybook: Storybook): Intent {
+      this.storybook = storybook
+      return Intent(context, StorybookActivity::class.java)
     }
+  }
 
-    private val binding by lazy { ActivityStorybookBinding.inflate(layoutInflater) }
+  private val binding by lazy { ActivityStorybookBinding.inflate(layoutInflater) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(binding.root)
 
-        val adapter = GroupAdapter<GroupieViewHolder>()
-        adapter.addAll(storybook.elements.map { ListItem(element = it) })
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = adapter
-    }
+    val adapter = GroupAdapter<GroupieViewHolder>()
+    adapter.addAll(storybook.elements.map { ListItem(element = it) })
+    binding.recyclerView.layoutManager = LinearLayoutManager(this)
+    binding.recyclerView.adapter = adapter
+  }
 
 }

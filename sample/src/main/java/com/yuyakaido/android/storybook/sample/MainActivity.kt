@@ -10,19 +10,19 @@ import com.yuyakaido.android.storybook.StorybookActivity
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val context = this
-        val storybook = Storybook(
-            elements = List(10) {
-                object : Element(title = "Title $it") {
-                    override fun view(): View = Button(context).apply { text = "Button $it" }
-                }
-            }
-        )
-        startActivity(StorybookActivity.createIntent(this, storybook))
-        finish()
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    val context = this
+    val storybook = Storybook(
+      elements = List(10) {
+        object : Element(title = "Title $it") {
+          override fun view(): View = Button(context).apply { text = "Button $it" }
+        }
+      }
+    )
+    startActivity(StorybookActivity.createIntent(this, storybook))
+    finish()
+  }
 
 }
