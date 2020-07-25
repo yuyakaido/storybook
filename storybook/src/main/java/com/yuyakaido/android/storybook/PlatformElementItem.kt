@@ -12,7 +12,7 @@ class PlatformElementItem(
   }
 
   override fun bind(binding: ItemPlatformElementBinding, position: Int) {
-    binding.title.text = element.title
+    binding.name.text = element.name
     binding.container.removeAllViews()
     binding.container.addView(element.view())
   }

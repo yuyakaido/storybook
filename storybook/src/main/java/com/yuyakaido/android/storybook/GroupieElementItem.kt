@@ -15,7 +15,7 @@ class GroupieElementItem(
   }
 
   override fun bind(binding: ItemGroupieElementBinding, position: Int) {
-    binding.title.text = element.title
+    binding.name.text = element.name
     binding.container.layoutManager = LinearLayoutManager(binding.root.context)
     binding.container.adapter = GroupAdapter<GroupieViewHolder>()
       .apply { add(element.group()) }

@@ -12,7 +12,7 @@ class SectionItem(
   }
 
   override fun bind(binding: ItemSectionBinding, position: Int) {
-    binding.title.text = section.title
+    binding.name.text = section.name
   }
 
 }

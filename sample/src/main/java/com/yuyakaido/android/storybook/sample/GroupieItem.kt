@@ -5,7 +5,7 @@ import com.xwray.groupie.databinding.BindableItem
 import com.yuyakaido.android.storybook.sample.databinding.ItemGroupieBinding
 
 class GroupieItem(
-  private val title: String
+  private val name: String
 ) : BindableItem<ItemGroupieBinding>() {
 
   override fun getLayout(): Int {
@@ -13,9 +13,9 @@ class GroupieItem(
   }
 
   override fun bind(binding: ItemGroupieBinding, position: Int) {
-    binding.button.text = title
+    binding.button.text = name
     binding.button.setOnClickListener {
-      Toast.makeText(binding.root.context, title, Toast.LENGTH_SHORT).show()
+      Toast.makeText(binding.root.context, name, Toast.LENGTH_SHORT).show()
     }
   }
 

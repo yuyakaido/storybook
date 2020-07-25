@@ -9,6 +9,7 @@ import com.xwray.groupie.Group
 import com.yuyakaido.android.storybook.Item
 import com.yuyakaido.android.storybook.Storybook
 import com.yuyakaido.android.storybook.StorybookActivity
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,32 +18,32 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     startActivity(
       StorybookActivity.createIntent(
-        this,
+        applicationContext,
         Storybook(
-          title = "Storybook",
+          name = "Storybook",
           items = List(4) { sectionIndex ->
             Item.Section(
-              title = "Section: $sectionIndex",
+              name = "Section: $sectionIndex",
               items = List(4) { subSectionIndex ->
                 Item.Section(
-                  title = "SubSection: $subSectionIndex",
-                  items = List(1024) { elementIndex ->
+                  name = "SubSection: ${Random(subSectionIndex).nextInt()}",
+                  items = List(4) { elementIndex ->
                     if (elementIndex.rem(2) == 0) {
-                      object : Item.Element.Platform(title = "PlatformElement: $elementIndex") {
+                      object : Item.Element.Platform(name = "PlatformElement: $elementIndex") {
                         override fun view(): View {
                           return Button(this@MainActivity).apply {
-                            val title = "Button: $elementIndex"
-                            text = title
+                            val name = "Button: $elementIndex"
+                            text = name
                             setOnClickListener {
-                              Toast.makeText(context, title, Toast.LENGTH_SHORT).show()
+                              Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
                             }
                           }
                         }
                       }
                     } else {
-                      object : Item.Element.Groupie(title = "GroupieElement: $elementIndex") {
+                      object : Item.Element.Groupie(name = "GroupieElement: $elementIndex") {
                         override fun group(): Group {
-                          return GroupieItem(title = "Button: $elementIndex")
+                          return GroupieItem(name = "Button: $elementIndex")
                         }
                       }
                     }
