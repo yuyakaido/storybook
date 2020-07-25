@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xwray.groupie.GroupAdapter
@@ -39,9 +38,6 @@ class StorybookActivity : AppCompatActivity() {
       when (item) {
         is SectionItem -> {
           startActivity(createIntent(this, storybook.toNext(item.section)))
-        }
-        is ElementItem -> {
-          Toast.makeText(this, "Element", Toast.LENGTH_SHORT).show()
         }
       }
     }

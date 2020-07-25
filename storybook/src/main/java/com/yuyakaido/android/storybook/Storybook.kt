@@ -36,12 +36,22 @@ sealed class Item {
     }
   }
 
-  abstract class Element(
-    override val title: String
-  ): Item() {
-    abstract fun view(): View
-    override fun toGroupieItem(): Group {
-      return ElementItem(this)
+  sealed class Element : Item() {
+    abstract class Platform(
+      override val title: String
+    ) : Element() {
+      abstract fun view(): View
+      override fun toGroupieItem(): Group {
+        return PlatformElementItem(this)
+      }
+    }
+    abstract class Groupie(
+      override val title: String
+    ) : Element() {
+      abstract fun group(): Group
+      override fun toGroupieItem(): Group {
+        return GroupieElementItem(this)
+      }
     }
   }
 }
