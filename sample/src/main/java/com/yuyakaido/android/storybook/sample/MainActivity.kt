@@ -25,28 +25,35 @@ class MainActivity : AppCompatActivity() {
             Item.Section(
               name = "Section: $sectionIndex",
               items = List(4) { subSectionIndex ->
+                val subSectionId = Random(subSectionIndex).nextInt()
+                val randomForSubSubSection = Random(subSectionId)
                 Item.Section(
-                  name = "SubSection: ${Random(subSectionIndex).nextInt()}",
-                  items = List(4) { elementIndex ->
-                    if (elementIndex.rem(2) == 0) {
-                      object : Item.Element.Platform(name = "PlatformElement: $elementIndex") {
-                        override fun view(): View {
-                          return Button(this@MainActivity).apply {
-                            val name = "Button: $elementIndex"
-                            text = name
-                            setOnClickListener {
-                              Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
+                  name = "SubSection: $subSectionId",
+                  items = List(4) {
+                    Item.Section(
+                      name = "SubSubSection: ${randomForSubSubSection.nextInt()}",
+                      items = List(4) { elementIndex ->
+                        if (elementIndex.rem(2) == 0) {
+                          object : Item.Element.Platform(name = "PlatformElement: $elementIndex") {
+                            override fun view(): View {
+                              return Button(this@MainActivity).apply {
+                                val name = "Button: $elementIndex"
+                                text = name
+                                setOnClickListener {
+                                  Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
+                                }
+                              }
+                            }
+                          }
+                        } else {
+                          object : Item.Element.Groupie(name = "GroupieElement: $elementIndex") {
+                            override fun group(): Group {
+                              return GroupieItem(name = "Button: $elementIndex")
                             }
                           }
                         }
                       }
-                    } else {
-                      object : Item.Element.Groupie(name = "GroupieElement: $elementIndex") {
-                        override fun group(): Group {
-                          return GroupieItem(name = "Button: $elementIndex")
-                        }
-                      }
-                    }
+                    )
                   }
                 )
               }
